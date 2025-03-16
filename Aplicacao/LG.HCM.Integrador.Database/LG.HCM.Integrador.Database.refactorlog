@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Operations Version="1.0" xmlns="http://schemas.microsoft.com/sqlserver/dac/Serialization/2012/02">
+  <Operation Name="Rename Refactor" Key="709cc867-d60f-4220-a439-1607c6efb796" ChangeDateTime="04/25/2021 04:51:05">
+    <Property Name="ElementName" Value="[w3in].[TIPO_INTEGRACAO].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[w3in].[TIPO_INTEGRACAO]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="COD_TIPO_INTEGRACAO" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="6744e0fd-6a4b-4234-8418-39dd7f5b37e2" ChangeDateTime="04/25/2021 04:54:03">
+    <Property Name="ElementName" Value="[w3in].[CONFIGURACAO_INTEGRACAO].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[w3in].[CONFIGURACAO_INTEGRACAO]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="COD_CONFIGURACAO_INTEGRACAO" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="283d539a-bb66-424e-b393-4143e219f8e0" ChangeDateTime="04/25/2021 05:02:59">
+    <Property Name="ElementName" Value="[W3IN].[CONFIGURACAO_INTEGRACAO].[NOM_CONFIGURACAO_INTEGRACAO]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[W3IN].[CONFIGURACAO_INTEGRACAO]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="ID_CONFIGURACAO_INTEGRACAO" />
+  </Operation>
+</Operations>

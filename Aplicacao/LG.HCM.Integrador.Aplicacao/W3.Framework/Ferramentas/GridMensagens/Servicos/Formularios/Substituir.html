@@ -1,0 +1,59 @@
+﻿<html>
+<body>
+    <div id='substituir'>
+        <input type='hidden' id='idCadastro' name='idCadastro' value='Mensagem' />
+        <input type='hidden' id='IdGrid' name='IdGrid' />
+        <input type='hidden' name='TipoAtualizacao' value='substituir' />
+        <fieldset class='fieldPrincipal fieldComBorda'>
+            <legend>Msg(substituir)</legend>
+            <!-- teste do formulario do  novo framework
+            <label>
+                <span>Msg(carga_horaria)</span>: <span class="asterisco">*</span><br />
+                <input id="VlrCargaHoraria" name="VlrCargaHoraria" class="autoNumeric" minimo="0" maximo="1000000" casasdecimais="0" type="text" maxlength="10" style="width: 120px" />
+                <span class="erroTxt"></span>
+            </label>
+			<label class="lblpeq">
+				<span>Msg(periodo_realizacao)</span>: <span class="asterisco">*</span>
+				<input id="DatInicio" name="DatInicio" calendario="true" type="text" />
+				<span class="erroTxt"></span>
+			</label>
+-->
+            <label class="inputHorizontal">
+                <span>Msg(Localizar):</span>
+                <input id='Localizar' name='Localizar' type='text' class='auto' maxlength='255' style='width: 120px;' value='' /><span id="inputInfo" style="padding-left: 6px; color: navy;"></span>
+                <span class="erroTxt"></span>
+            </label>
+            <label class="inputHorizontal">
+                <span>Msg(SubstituirPor):</span>
+                <input id='SubstituirPor' name='SubstituirPor' type='text' class='auto' maxlength='255' style='width: 120px;' value='' />
+                <span class="erroTxt"></span>
+            </label>
+        </fieldset>
+        <div style="padding-top: 10px"></div>
+        <fieldset class='fieldPrincipal fieldComBorda'>
+            <legend>Msg(LocalizarIdioma):<span class='asterisco'>*</span></legend>
+            <label>
+                <input type='hidden' id='LocalizarIdioma' name='LocalizarIdioma' value='' />
+                <span class='erroTxt'></span>
+            </label>
+        </fieldset>
+        <!--
+        <fieldset class='fieldPrincipal fieldComBorda'>
+            <legend>Msg(opcoes)</legend>
+            <div id='divRadioOpcaoMC' class='clearfix'>
+                <label>
+                    <input class='radio' id='opcaoMC' name='Opcoes' type='radio' value='MC' checked="checked" /><span>Msg(capitalizado)</span>
+                </label>
+                <label>
+                    <input class='radio' id='opcaoCI' name='Opcoes' type='radio' value='CI' /><span>Msg(case_insensitive)</span>
+                </label>
+                <label>
+                    <input class='radio' id='opcaoCS' name='Opcoes' type='radio' value='CS' /><span>Msg(case_sensitive)</span>
+                </label>
+            </div>
+            <span class='erroTxt'></span>
+        </fieldset>
+        -->
+    </div>
+</body>
+</html>

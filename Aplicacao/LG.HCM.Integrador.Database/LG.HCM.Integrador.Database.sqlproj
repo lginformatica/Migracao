@@ -1,0 +1,131 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <Name>LG.HCM.Integrador.Database</Name>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectVersion>4.1</ProjectVersion>
+    <ProjectGuid>{288e2554-34e0-4dc8-a193-cbf7f57ef6c1}</ProjectGuid>
+    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql120DatabaseSchemaProvider</DSP>
+    <OutputType>Database</OutputType>
+    <RootPath>
+    </RootPath>
+    <RootNamespace>LG.HCM.Integrador.Database</RootNamespace>
+    <AssemblyName>LG.HCM.Integrador.Database</AssemblyName>
+    <ModelCollation>1033, CI</ModelCollation>
+    <DefaultFileStructure>BySchemaAndSchemaType</DefaultFileStructure>
+    <DeployToDatabase>True</DeployToDatabase>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <TargetLanguage>CS</TargetLanguage>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <SqlServerVerification>False</SqlServerVerification>
+    <IncludeCompositeObjects>True</IncludeCompositeObjects>
+    <TargetDatabaseSet>True</TargetDatabaseSet>
+    <GenerateCreateScript>True</GenerateCreateScript>
+    <DefaultSchema>w3in</DefaultSchema>
+    <ValidateCasingOnIdentifiers>False</ValidateCasingOnIdentifiers>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">11.0</VisualStudioVersion>
+    <!-- Default to the v11.0 targets path if the targets file for the current VS version is not found -->
+    <SSDTExists Condition="Exists('$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets')">True</SSDTExists>
+    <VisualStudioVersion Condition="'$(SSDTExists)' == ''">11.0</VisualStudioVersion>
+  </PropertyGroup>
+  <Import Condition="'$(SQLDBExtensionsRefPath)' != ''" Project="$(SQLDBExtensionsRefPath)\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <Import Condition="'$(SQLDBExtensionsRefPath)' == ''" Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <ItemGroup>
+    <Folder Include="Properties" />
+    <Folder Include="Post-Deploy" />
+    <Folder Include="Security" />
+    <Folder Include="W3IN" />
+    <Folder Include="W3IN\Functions" />
+    <Folder Include="Post-Deploy\Dados" />
+    <Folder Include="Snapshots" />
+    <Folder Include="W3IN\Tables" />
+  </ItemGroup>
+  <ItemGroup>
+    <SqlCmdVariable Include="master">
+      <DefaultValue>master</DefaultValue>
+      <Value>$(SqlCmdVar__1)</Value>
+    </SqlCmdVariable>
+    <SqlCmdVariable Include="W3SistemaIntegradoDatabase">
+      <DefaultValue>W3.SistemaIntegrado.Database</DefaultValue>
+      <Value>$(SqlCmdVar__2)</Value>
+    </SqlCmdVariable>
+  </ItemGroup>
+  <ItemGroup>
+    <ArtifactReference Include="\\w3srv-arc\DatabaseDirectory\W3.SistemaIntegrado\W3SI_2023.03.00.dacpac">
+      <HintPath>\\w3srv-arc\DatabaseDirectory\W3.SistemaIntegrado\W3SI_2023.03.00.dacpac</HintPath>
+      <SuppressMissingDependenciesErrors>False</SuppressMissingDependenciesErrors>
+    </ArtifactReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Build Include="Security\W3IN_Schema.sql" />
+    <Build Include="W3IN\Functions\FN_VERSAO_IN.sql" />
+    <Build Include="W3IN\Tables\TIPO_INTEGRACAO.sql" />
+    <Build Include="W3IN\Tables\CONFIGURACAO_INTEGRACAO.sql" />
+    <None Include="Post-Deploy\Dados\W3IN_data.sql" />
+    <Build Include="W3IN\Functions\FN_CALCULAR_MEDIA_RELATIVA.sql" />
+    <Build Include="W3IN\Tables\CONFIGURACAO_API.sql" />
+    <Build Include="W3IN\Tables\MODELO_CONFIGURACAO_API.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Post-Deploy\Dados\W3SI_data.sql" />
+    <PostDeploy Include="Post-Deploy\PostDeploy.sql" />
+    <None Include="Snapshots\W3IN_2021.02.00.dacpac" />
+    <None Include="Snapshots\W3IN_2021.03.00.dacpac" />
+    <None Include="Snapshots\W3IN_2021.04.00.dacpac" />
+    <None Include="Snapshots\W3IN_2021.05.00.dacpac" />
+    <None Include="Snapshots\W3IN_2022.01.00.dacpac" />
+    <None Include="Snapshots\W3IN_2022.02.00.dacpac" />
+    <None Include="Snapshots\W3IN_2022.03.00.dacpac" />
+    <None Include="Snapshots\W3IN_2022.04.00.dacpac" />
+    <None Include="Snapshots\W3IN_2022.04.01.dacpac" />
+    <None Include="Snapshots\W3IN_2022.05.00.dacpac" />
+    <None Include="Snapshots\W3IN_2022.06.00.dacpac" />
+    <None Include="Snapshots\W3IN_2023.01.00.dacpac" />
+    <None Include="Snapshots\W3IN_2023.02.00.dacpac" />
+    <None Include="Snapshots\W3IN_2023.03.00.dacpac" />
+    <None Include="Snapshots\W3IN_2023.04.00.dacpac" />
+    <None Include="Snapshots\W3IN_2023.05.00.dacpac" />
+    <None Include="Snapshots\W3IN_2023.06.00.dacpac" />
+    <None Include="Snapshots\W3IN_2023.06.01.dacpac" />
+    <None Include="Snapshots\W3IN_2024.01.00.dacpac" />
+    <None Include="Snapshots\W3IN_2024.02.00.dacpac" />
+    <None Include="Snapshots\W3IN_2024.02.01.dacpac" />
+    <None Include="Snapshots\W3IN_2024.03.00.dacpac" />
+    <None Include="Snapshots\W3IN_2024.04.00.dacpac" />
+    <None Include="Snapshots\W3IN_2024.04.01.dacpac" />
+    <None Include="Snapshots\W3IN_2024.05.00.dacpac" />
+    <None Include="Snapshots\W3IN_2024.06.00.dacpac" />
+    <None Include="Snapshots\W3IN_2025.01.00.dacpac" />
+  </ItemGroup>
+  <ItemGroup>
+    <RefactorLog Include="LG.HCM.Integrador.Database.refactorlog" />
+  </ItemGroup>
+</Project>

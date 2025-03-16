@@ -1,0 +1,396 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>W3.Framework.API</name>
+    </assembly>
+    <members>
+        <member name="T:W3.Framework.API.Autenticacao.AutenticacaoController">
+            <summary>
+            Controller de autenticação padrão.
+            </summary>
+        </member>
+        <member name="M:W3.Framework.API.Autenticacao.AutenticacaoController.Autenticar(System.String,System.String)">
+            <summary>
+            Método de autenticação
+            </summary>
+            <param name="userName">Usuário disponibilizado pela w3net</param>
+            <param name="password">Senha disponibilizada pela w3net</param>
+            <remarks>Método de autenticação de serviços. Retorna um token em um cookie que deverá ser repassado para todos os serviços.</remarks>
+            <response code="200">Cookie com Token a ser repassado para todos os serviços. Tempo de Expiração: 2 minutos.</response>
+            <response code="401">Unauthorized</response>
+            <response code="500">Internal Server Error</response>
+        </member>
+        <member name="M:W3.Framework.API.Autenticacao.AutenticacaoController.AutenticarPagina(W3.Framework.API.Classes.Token)">
+            <summary>
+            Método de autenticação
+            </summary>
+            <param name="userName">Usuário disponibilizado pela w3net</param>
+            <param name="password">Senha disponibilizada pela w3net</param>
+            <remarks>Método de autenticação de serviços. Retorna um token em um cookie que deverá ser repassado para todos os serviços.</remarks>
+            <response code="200">Cookie com Token a ser repassado para todos os serviços. Tempo de Expiração: 2 minutos.</response>
+            <response code="401">Unauthorized</response>
+            <response code="500">Internal Server Error</response>
+        </member>
+        <member name="T:W3.Framework.API.Autenticacao.W3AuthorizationServerProvider">
+            <summary>
+            Provider de autenticação das API's dos produtos criados pela equipe LG-BH.
+            </summary>
+            <remarks>
+            Foi selecionado e padronizado, a utilização do protocolo oAuth 2.0 para realizar a controle de acesso as API's.
+            </remarks>
+        </member>
+        <member name="M:W3.Framework.API.Autenticacao.W3AuthorizationServerProvider.#ctor">
+            <summary>
+            Construtor padrão do provider de autenticação.
+            </summary>
+        </member>
+        <member name="M:W3.Framework.API.Autenticacao.W3AuthorizationServerProvider.ValidateClientAuthentication(Microsoft.Owin.Security.OAuth.OAuthValidateClientAuthenticationContext)">
+            <summary>
+            Método de autenticação do cliente consumidor das API's.
+            </summary>
+            <param name="context">
+            Como parâmetro, é preciso informar os parâmetros necessários para o tipo de autenticação 'Client_Credentials', informar o padrão descrito na RFC do protocolo oAuth 2.0.
+            </param>
+            <remarks>
+            Nesta versão, não será suportado o tipo de autenticação 'Password', o nível de acesso as API's atual é de comunicação de Aplicação -> Aplicação. 
+            Para acesso direto usuário final a API, será necessário uma nova versão contemplando tal necessidade.
+            </remarks>
+        </member>
+        <member name="M:W3.Framework.API.Autenticacao.W3AuthorizationServerProvider.GrantClientCredentials(Microsoft.Owin.Security.OAuth.OAuthGrantClientCredentialsContext)">
+            <summary>
+            Método responsável por criar o token de acesso as API's.
+            </summary>
+            <param name="context">
+            Parâmetro com o contexto do processo de autenticação do tipo 'Client_Credentials', as propriedades possiveis aqui no contexto estão descritas na RFC do protocolo oAuth 2.0.
+            </param>
+            <remarks>
+            No token de retorno, incluimos apenas o claim 'ClaimTypes.Name' com o 'clientId' e propriedade "as:client_id".
+            </remarks>
+        </member>
+        <member name="T:W3.Framework.API.Autenticacao.AuthorizeCookieAttribute">
+            <summary>
+            Atributo para realização da autenticação por cookie, deve ser usado apenas em API's que precisam do contexto
+            de sessão, caso contrário não deve ser utilizado, deve-se utilizar a annotation [Authorize].
+            </summary>
+            <remarks>
+            Evitar o uso, deve-se ao máximo utilizar autenticação via protocolo oAuth 2.0 (este framework já suporte este tipo de autenticação).
+            </remarks>
+        </member>
+        <member name="M:W3.Framework.API.Autenticacao.AuthorizeCookieAttribute.#ctor">
+            <summary>
+            Construtor padrão da classe.
+            </summary>
+        </member>
+        <member name="M:W3.Framework.API.Autenticacao.AuthorizeCookieAttribute.OnActionExecuting(System.Web.Http.Controllers.HttpActionContext)">
+            <summary>
+            Método a ser executado antes de cada action marcada com este attributon (annotation).
+            </summary>
+            <param name="actionContext">
+            Instância do contexto de execução da action.
+            </param>
+        </member>
+        <member name="T:W3.Framework.API.BaseWebApi">
+            <summary>
+            Classe base de API's.
+            </summary>
+        </member>
+        <member name="M:W3.Framework.API.BaseWebApi.#ctor">
+            <summary>
+            Construtor default da classe base de API's.
+            </summary>
+        </member>
+        <member name="F:W3.Framework.API.BaseWebApi.IDENTIFICADOR_DE_AUTENTICACAO_COOKIE_W3">
+            <summary>
+            String identificadora do cookie de autenticação da LG-BH.
+            </summary>
+        </member>
+        <member name="M:W3.Framework.API.BaseWebApi.TratarRequisicaoToken">
+            <summary>
+            Método para realizar verificar se o token repassado é valido (token LG-BH).
+            </summary>
+        </member>
+        <member name="P:W3.Framework.API.BaseWebApi.UrlModulo">
+            <summary>
+            Recuperar a URL do módulo corrente.
+            </summary>
+        </member>
+        <member name="P:W3.Framework.API.BaseWebApi.UrlSI">
+            <summary>
+            Recuperar a URL do Sistema Integrado corrente.
+            </summary>
+        </member>
+        <member name="P:W3.Framework.API.BaseWebApi.Sessao">
+            <summary>
+            Recuperar as variaveis de sessao (diretamente da base de dados)
+            </summary>
+        </member>
+        <member name="P:W3.Framework.API.BaseWebApi.CodUsuario">
+            <summary>
+            Recuperar o código do usuário logado.
+            </summary>
+        </member>
+        <member name="P:W3.Framework.API.BaseWebApi.Idioma">
+            <summary>
+            Recuperar a sigla do idioma, caso não seja encontrado será retornado a sigla 'pt-BR'.
+            </summary>
+        </member>
+        <member name="P:W3.Framework.API.BaseWebApi.CodFuncionarioExterno">
+            <summary>
+            Recuperar o código externo do funcionário.
+            </summary>
+        </member>
+        <member name="P:W3.Framework.API.BaseWebApi.NumSkin">
+            <summary>
+            Recuperar o número do Skin
+            </summary>
+        </member>
+        <member name="M:W3.Framework.API.BaseWebApi.Msg(System.String)">
+            <summary>
+            Método para recuperar uma mensagem idiomizada com base no idioma e sua respectiva chave.
+            </summary>
+            <param name="chaveMensagem">Identificador da mensagem no arquivo .msg</param>
+            <returns>String com o conteúdo da mensagem já globalizado.</returns>
+        </member>
+        <member name="M:W3.Framework.API.BaseWebApi.Msg(System.String,System.String)">
+            <summary>
+            Método para recuperar uma mensagem idiomizada com base no idioma e sua respectiva chave.
+            </summary>
+            <param name="idioma">Sigal do idioma</param>
+            <param name="chaveMensagem"></param>
+            <returns>Mensagem no idioma desejado.</returns>
+        </member>
+        <member name="M:W3.Framework.API.BaseWebApi.ListarMensagens(System.String)">
+            <summary>
+            Método para listar todas as mensagens de um arquivo .msg de um Controller, com base no idioma desejado.
+            </summary>
+            <param name="idioma">sigla do idioma desejado.</param>
+            <returns>Dicionário contendo chave/valor das mensagens já globalizadas.</returns>
+        </member>
+        <member name="M:W3.Framework.API.BaseWebApi.RetornarListaArquivosMensagens">
+            <summary>
+            Método para recuperar o path fisico dos arquivos de mensagens configurados através do atributo: <seealso cref="T:W3.Framework.API.Classes.ArquivoMensagem" />.
+            </summary>
+        </member>
+        <member name="M:W3.Framework.API.BaseWebApi.ListarMensagens(System.String,System.String)">
+            <summary>
+            Método para recuperar a lista de mensagens com base em um path e idioma.
+            </summary>
+            <param name="idioma">Idioma a ser filtrado.</param>
+            <param name="pathMsg">Path do arquivo de mensagens (msg) a ser utilizado.</param>
+            <returns></returns>
+        </member>
+        <member name="M:W3.Framework.API.BaseWebApi.TratarErro(System.Exception)">
+            <summary>
+            Método para realizar o tratamento de erros internos das Api's e retornar um erro tratado para o consumidor da Api.
+            </summary>
+            <param name="erro">
+            Informe a instância do erro ocorrido.
+            </param>
+            <returns>
+            Instância do tipo ExceptionResult para ser retornada para o cliente consumidor da Api.
+            </returns>
+        </member>
+        <member name="T:W3.Framework.API.Classes.ArquivoMensagem">
+            <summary>
+            Atributo para identificar unicamente um arquivo de mensagem (.msg), o mesmo deve conter o formato padrão de um arquivo de globalização dos produtos LG.
+            Este atributo poderá ser utilizado multipla vezes em um mesmo controller.
+            </summary>
+        </member>
+        <member name="P:W3.Framework.API.Classes.ArquivoMensagem.CaminhoRelativoArquvioMensagem">
+            <summary>
+            Recuperar ou setar o caminho fisico de uma arquivo de mensagem de globalização.
+            </summary>
+        </member>
+        <member name="M:W3.Framework.API.Classes.ArquivoMensagem.#ctor(System.String)">
+            <summary>
+            Construtor padrão da entidade em questão, tendo com parâmetro o caminho fisico de um arquivo de mensagem.
+            </summary>
+            <param name="caminhoRelativoArquivoMensagem">
+            Informar o caminho fisico de uma arquivo de mensagem de globalização.
+            </param>
+        </member>
+        <member name="T:W3.Framework.API.Classes.CompressaoHelper">
+            <summary>
+            Helper com métodos relativo a compressão de dados.
+            </summary>
+        </member>
+        <member name="M:W3.Framework.API.Classes.CompressaoHelper.ZipBytes(System.Byte[])">
+            <summary>
+            Método para comprimir os bytes passados no formato zip.
+            </summary>
+        </member>
+        <member name="M:W3.Framework.API.Classes.LGAutenticacao.Decrypt(System.String)">
+            <summary>
+            Método para decriptar o token autênticação enviar via integração com o autoatendimento da LG
+            </summary>
+            <param name="text"></param>
+            <returns></returns>
+        </member>
+        <member name="T:W3.Framework.API.Classes.W3Autenticacao">
+            <summary>
+            Classe para realizar autenticação de usuários baseado no login e senha do mesmo.
+            </summary>
+        </member>
+        <member name="M:W3.Framework.API.Classes.W3Autenticacao.#ctor">
+            <summary>
+            Construtor padrão.
+            </summary>
+        </member>
+        <member name="M:W3.Framework.API.Classes.W3Autenticacao.AutenticacaoViaHash(System.String,System.String)">
+            <summary>
+            Autenticação por hash do cliente
+            </summary>
+            <param name="nomeCliente">
+            Nome do cliente
+            </param>
+            <param name="hashCliente">
+            Hash secure do cliente (esta informação é repassada para o cliente em tempo de implantação).
+            </param>
+            <returns>
+            Boolean, true caso as informações estejam corretas e false caso contrário.
+            </returns>
+        </member>
+        <member name="P:W3.Framework.API.Classes.RetornoIntegracao.Erro">
+            <summary>
+            Informa erro na requisição - true ou false
+            </summary>
+        </member>
+        <member name="P:W3.Framework.API.Classes.RetornoIntegracao.DataHora">
+            <summary>
+            Data e hora formato - dd/MM/yyyy HH:mm:ss
+            </summary>
+        </member>
+        <member name="P:W3.Framework.API.Classes.RetornoIntegracao.Mensagem">
+            <summary>
+            Mensagem de erro ou de sucesso
+            </summary>
+        </member>
+        <member name="T:W3.Framework.API.Documentacao.FormatXmlCommentProperties">
+            <summary>
+            Filter de aplicação de configurações acerca de documentação do Swagger.
+            </summary>
+        </member>
+        <member name="M:W3.Framework.API.Documentacao.FormatXmlCommentProperties.Apply(Swashbuckle.Swagger.Operation,Swashbuckle.Swagger.SchemaRegistry,System.Web.Http.Description.ApiDescription)">
+            <summary>
+            Método para aplicar as configurações de documentação do swagger.
+            </summary>
+            <param name="operation"></param>
+            <param name="schemaRegistry"></param>
+            <param name="apiDescription"></param>
+        </member>
+        <member name="M:W3.Framework.API.Documentacao.FormatXmlCommentProperties.Formatted(System.String)">
+            <summary>
+            Gets a the list of entities and their descriptions from the Entity Service.
+            </summary>
+            <remarks>
+            ### REMARKS ###
+            Use this call to retrieve a list of entities and their descriptions. This is used when setting up a new ViewSet.
+            - Returns an array of **EntityDescription** objects.
+            - The array is `ordered alphabetically` by the Name property.
+            <!-- 
+            <code>
+                // contrived code sample to demonstrate code block in swagger.
+                for (i=0; i < 5; i++)
+                {
+                    doesthiswork = yesitdoes;
+                }
+            </code>
+            -->
+            </remarks>
+            <response code="200">OK</response>
+            <returns>An array of EntityDescription objects.</returns>
+        </member>
+        <member name="T:W3.Framework.API.Documentacao.SwaggerConfig">
+            <summary>
+            Classe para configuração da documentação quer será gerada a partir do Swagger.
+            </summary>
+            <remarks>
+            As documentações geradas a partir do Swaager, podem ser visualizadas utilizando a ferramenta Swagger Editor, link: https://editor.swagger.io />
+            </remarks>
+        </member>
+        <member name="M:W3.Framework.API.Documentacao.SwaggerConfig.#ctor(System.String)">
+            <summary>
+            Construtora padrão da classe em questão.
+            </summary>
+            <param name="nomeAplicacao">
+            Informar o nome da aplicação que faz uso do framework API.
+            </param>
+        </member>
+        <member name="M:W3.Framework.API.Documentacao.SwaggerConfig.Register(System.Web.Http.HttpConfiguration)">
+            <summary>
+            Main método para registrar as API's nas configurações do Swagger.
+            </summary>
+            <param name="config"></param>
+        </member>
+        <member name="M:W3.Framework.API.Documentacao.SwaggerConfig.AddFrameworkApiComments">
+            <summary>
+            Método para adicionar comentários de documentação do framework API
+            </summary>
+            <returns>
+            Path do arquivo com comentários do frmework API.
+            </returns>
+        </member>
+        <member name="M:W3.Framework.API.Documentacao.SwaggerConfig.AddApplicationComments(System.String[])">
+            <summary>
+            Método para adicionar comentários de documentação da aplicação que faz utilização do framework API.
+            </summary>
+            <remarks>
+            Adiciona aqui todos os arquivos de documentação que sua aplicação irá gerara.
+            </remarks>
+        </member>
+        <member name="T:W3.Framework.API.Attributes.CompactarRestultadoAttribute">
+            <summary>
+            Action Attribute Filter com objetivo de compactar o retorno das API's marcadas com este atributo.
+            </summary>
+            <remarks>
+            A compactação será realizada no formato ZGip.
+            </remarks>
+        </member>
+        <member name="M:W3.Framework.API.Attributes.CompactarRestultadoAttribute.OnActionExecuted(System.Web.Http.Filters.HttpActionExecutedContext)">
+            <summary>
+            Método para realizar a compressão do retorno, após execução da action propriamente dita.
+            </summary>
+        </member>
+        <member name="T:W3.Framework.API.Start.WebApiStartConfig">
+            <summary>
+            Classe de configuração das web api's da aplicação que faz uso do framework de API.
+            </summary>
+        </member>
+        <member name="P:W3.Framework.API.Start.WebApiStartConfig.SwaggerConfig">
+            <summary>
+            Recuperar ou setar configurações de documentaçao da API.
+            </summary>
+        </member>
+        <member name="P:W3.Framework.API.Start.WebApiStartConfig.Config">
+            <summary>
+            Recuperar ou setar configurações da web api.
+            </summary>
+        </member>
+        <member name="M:W3.Framework.API.Start.WebApiStartConfig.#ctor(System.String)">
+            <summary>
+            Construtor padrao da classe em questão.
+            </summary>
+            <param name="nomeAplicacao">
+            Informar o nome da aplicação que faz uso do framework API.
+            </param>
+        </member>
+        <member name="P:W3.Framework.API.Start.WebApiStartConfig.OAuthBearerOptions">
+            <summary>
+            Instância do OAuthBearerAuthentication para utilização da segurança da api.
+            </summary>
+        </member>
+        <member name="M:W3.Framework.API.Start.WebApiStartConfig.Configuration(Owin.IAppBuilder)">
+            <summary>
+            Método de configuração da API.
+            </summary>
+            <param name="app">
+            Instância da classe que implementa IAppBuider (.net assembly work)
+            </param>
+        </member>
+        <member name="M:W3.Framework.API.Start.WebApiStartConfig.ConfiguracoesAdicionais">
+            <summary>
+            Método para ser sobrescrito para aplicação de configurações adicionais as configurações da API (inclusive para inclusão de documentação do swagger).
+            </summary>
+        </member>
+    </members>
+</doc>

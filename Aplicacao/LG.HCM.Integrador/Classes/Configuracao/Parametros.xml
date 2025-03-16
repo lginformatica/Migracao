@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='Windows-1252' ?>
+<cadastro xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xsi:noNamespaceSchemaLocation='../../Config.xsd' id='Parametros' dbName='{owner-SI}PARAMETRO'>
+	<colunas>
+		<coluna id='CodParametro' indChave='true' >
+		</coluna>
+		<coluna id='NomParametro' indDescricao='true' >
+		</coluna>
+		<coluna id='VlrParametro' indDescricao='true' >
+		</coluna>
+	</colunas>
+	<formulario largura='800'  altura='600'>
+		<items>
+			<item type='settings' position='label-top' offsetLeft='10' offsetTop='10' />
+			<item type='input' inputWidth='30' name='CodParametro' />
+		</items>
+	</formulario>
+	<queries>
+		<query id='atualizar'>
+			<![CDATA[
+          declare @idParametro varchar(max) = {IdParametro},
+                @vlrparametro varchar(max) = {Vlrparametro}
+                
+          update {owner-SI}parametro
+          set vlr_parametro = @vlrparametro
+          where nom_parametro = @idParametro 
+      ]]>
+		</query>
+		<query id='buscar'>
+			<![CDATA[
+          declare @idParametro varchar(max) = {IdParametro}
+          select nom_parametro, vlr_parametro, ind_tipo_valor from {owner-SI}parametro
+          where nom_parametro = @idParametro 
+      ]]>
+		</query>
+	</queries>
+	<Mensagens>
+	</Mensagens>
+</cadastro>

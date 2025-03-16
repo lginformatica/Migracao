@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+<html>
+<body>
+
+    <!-- Div com o conteudo da Aba Geral -->
+    <div id='formGeral'>
+        <fieldset class='fieldPrincipal' xstyle='width:90%'>
+
+            <label>
+                <span style="font-weight: bold; color: red;">Msg(alerta_simplifica)</span>
+            </label>
+
+            <label>
+                <span>Msg(envio_dados_corporativos)</span>:
+                <div style="margin-top:15px;margin-bottom:15px;">
+                    <input type="radio" id="IntegracaoTreinamentoEnvioDadosCorporativos" name="IntegracaoTreinamentoEnvioDadosCorporativos" value="TRUE" class="radio" />
+                    <span style="margin-right: 10px">Msg(sim)</span>
+                    <input type="radio" id="IntegracaoTreinamentoEnvioDadosCorporativos" name="IntegracaoTreinamentoEnvioDadosCorporativos" value="FALSE" class="radio" />
+                    <span>Msg(nao)</span>
+                </div>
+            </label>
+
+            <label>
+                <span>Msg(url_base_api)</span>: <span class='asterisco'>*</span>
+                <input id='IntegracaoTreinamentoUrlBaseApi' name='IntegracaoTreinamento.UrlBaseApi' type='text' value='' />
+                <span class='erroTxt'></span>
+            </label>
+            <label>
+                <span>Msg(token_client_id)</span>: <span class='asterisco'>*</span>
+                <input id='IntegracaoTreinamentoTokenClientId' name='IntegracaoTreinamento.TokenClientId' type='text' value='' />
+                <span class='erroTxt'></span>
+            </label>
+            <label>
+              <span>Msg(token_client_secret)</span>: <span class='asterisco'>*</span><br />
+              <input id='IntegracaoTreinamentoTokenClientSecret' name='IntegracaoTreinamento.TokenClientSecret' type='password' value='' maxlength="200"/>
+              <span class='erroTxt'></span>
+            </label>
+        </fieldset>
+    </div>
+</body>
+</html>

@@ -1,0 +1,331 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:sch="http://www.ascc.net/xml/schematron"
+>
+  <xs:element name="cadastro">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="colunas" minOccurs="1" maxOccurs="1">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="coluna" minOccurs="1" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:all>
+                    <xs:element name="referencia" minOccurs="0">
+                      <xs:complexType>
+                        <xs:sequence></xs:sequence>
+                        <xs:attribute name="tipo" use="required">
+                          <xs:simpleType>
+                            <xs:restriction base="xs:string">
+                              <xs:enumeration value="Colecao" />
+                              <xs:enumeration value="Lista" />
+                            </xs:restriction>
+                          </xs:simpleType>
+                        </xs:attribute>
+                        <xs:attribute name="nome" use="required" type="xs:string" />
+                        <xs:attribute name="filtro" use="optional" type="xs:string" />
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="validacao" minOccurs="0">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="mensagem" minOccurs="0" maxOccurs="unbounded" type="mensagem" />                          
+                        </xs:sequence>
+                        <xs:attribute name="indPermitirNulo" use="optional" type="w3boolean" />
+                        <xs:attribute name="indPermitirEspacoInterno" use="optional" type="w3boolean" />
+                        <xs:attribute name="indPermitirDuplicidade" use="optional" type="w3boolean" />
+                        <xs:attribute name="tamanhoMaximo" use="optional" type="xs:int" />
+                        <xs:attribute name="opcoesPermitidas" use="optional" type="xs:string" />
+                        <xs:attribute name="dscExpressao1" use="optional" type="xs:string" />
+                        <xs:attribute name="dscExpressao2" use="optional" type="xs:string" />
+                        <xs:attribute name="dscExpressao3" use="optional" type="xs:string" />
+                        <xs:attribute name="query" use="optional" type="xs:string" />
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:all>
+                  <xs:attribute name="id" use="required" type="xs:string" />
+                  <xs:attribute name="tipo" use="optional">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:enumeration value="System.String" />
+                        <xs:enumeration value="TIdioma" />
+                        <xs:enumeration value="System.Int32" />
+                        <xs:enumeration value="System.Double" />
+                        <xs:enumeration value="System.DateTime" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:attribute>
+                  <xs:attribute name="dbName" use="optional" type="xs:string" />
+                  <xs:attribute name="indChave" use="optional" type="w3boolean" />
+                  <xs:attribute name="indIdentity" use="optional" type="w3boolean" />
+                  <xs:attribute name="indId" use="optional" type="w3boolean" />
+                  <xs:attribute name="indDescricao" use="optional" type="w3boolean" />
+                  <xs:attribute name="indExibirGrid" use="optional" type="w3boolean" default="true" />
+                  <xs:attribute name="indSequencia" use="optional" type="w3boolean" />
+                  <xs:attribute name="refSequencia" use="optional" type="xs:string" />
+                  <xs:attribute name="label" use="optional" type="xs:string" />
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="formulario" minOccurs="1" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:choice>
+              <!--<xs:any minOccurs="0" maxOccurs="unbounded" processContents="skip" />-->
+              <xs:element name="items" maxOccurs="1" />
+              <xs:element name="div" maxOccurs="1" />
+              <xs:element name="pagina" maxOccurs="1">
+                <xs:complexType>
+                  <xs:attribute name="url" use="required" type="xs:string" />
+                  <xs:attribute name="titulo" use="required" type="xs:string" />
+                </xs:complexType>
+              </xs:element>
+            </xs:choice>
+            <xs:attribute name="id" use="optional" type="xs:string" />
+            <xs:attribute name="altura" use="required" type="xs:int" />
+            <xs:attribute name="largura" use="required" type="xs:int" />
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="permissoes" minOccurs="0" maxOccurs="1">
+          <xs:complexType>
+            <xs:sequence>
+            </xs:sequence>
+            <xs:attribute name="incluir" use="optional" type="w3boolean" />
+            <xs:attribute name="editar" use="optional" type="w3boolean" />
+            <xs:attribute name="clonar" use="optional" type="w3boolean" />
+            <xs:attribute name="excluir" use="optional" type="w3boolean" />
+            <xs:attribute name="ordenador" use="optional" type="w3boolean" />
+            <xs:attribute name="escolherSeletor" use="optional" type="w3boolean" />
+            <xs:attribute name="atualizar" use="optional" type="w3boolean" />
+            <xs:attribute name="exportarGrid" use="optional" type="w3boolean" />
+            <xs:attribute name="exportarDados" use="optional" type="w3boolean" />
+            <xs:attribute name="importar" use="optional" type="w3boolean" />
+            <xs:attribute name="menuFiltro" use="optional" type="w3boolean" />
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="toolbar" minOccurs="0" maxOccurs="1">
+          <xs:complexType>
+            <xs:choice minOccurs='0' maxOccurs='unbounded'>
+              <xs:element name="item" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence minOccurs="0" maxOccurs="unbounded">
+                    <xs:any processContents="skip"/>
+                  </xs:sequence>
+                  <xs:attribute name="habilitar" use="optional">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:enumeration value="sempre" />
+                        <xs:enumeration value="nunca" />
+                        <xs:enumeration value="selecaoSimples" />
+                        <xs:enumeration value="selecaoMultipla" />
+                        <xs:enumeration value="sempreComRegistros" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:attribute>
+                  <xs:attribute name="abrirFormulario" use="optional" type="w3boolean" />
+                  <xs:attribute name="onClick" use="optional" type="xs:string" />
+                  <xs:anyAttribute processContents="skip" />
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="itemPadrao" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:attribute name="tipo" use="required">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:enumeration value="incluir" />
+                        <xs:enumeration value="editar" />
+                        <xs:enumeration value="clonar" />
+                        <xs:enumeration value="excluir" />
+                        <xs:enumeration value="exportarGrid" />
+                        <xs:enumeration value="exportarDados" />
+                        <xs:enumeration value="importar" />
+                        <xs:enumeration value="menuFiltro" />
+                        <xs:enumeration value="atualizar" />
+                        <xs:enumeration value="buscar" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:attribute>
+                </xs:complexType>
+              </xs:element>
+            </xs:choice>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="queries" minOccurs="0" maxOccurs="1">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="select" minOccurs="0" maxOccurs="1">
+                <xs:complexType mixed="true">
+                  <xs:sequence>
+                    <xs:element name="atualizacaoCache" minOccurs="0" maxOccurs="1" type="atualizacaoCache" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="insert" minOccurs="0" maxOccurs="1">
+                <xs:complexType mixed="true">
+                  <xs:sequence>
+                    <xs:element name="atualizacaoCache" minOccurs="0" maxOccurs="1" type="atualizacaoCache" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="update" minOccurs="0" maxOccurs="1">
+                <xs:complexType mixed="true">
+                  <xs:sequence>
+                    <xs:element name="atualizacaoCache" minOccurs="0" maxOccurs="1" type="atualizacaoCache" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="delete" minOccurs="0" maxOccurs="1">
+                <xs:complexType mixed="true">
+                  <xs:sequence>
+                    <xs:element name="atualizacaoCache" minOccurs="0" maxOccurs="1" type="atualizacaoCache" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="query" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType mixed="true">
+                  <xs:sequence>
+                    <xs:element name="atualizacaoCache" minOccurs="0" maxOccurs="1" type="atualizacaoCache" />
+                  </xs:sequence>
+                  <xs:attribute name="id" use="required" type="xs:string" />
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Mensagens" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Mensagem" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="pt-BR" minOccurs="1" type="xs:string" />
+                    <xs:element name="en-US" minOccurs="0" type="xs:string" />
+                    <xs:element name="es-ES" minOccurs="0" type="xs:string" />
+                    <xs:element name="fr-FR" minOccurs="0" type="xs:string" />
+                  </xs:sequence>
+                  <xs:attribute name="chave" use="required" type="xs:string" />
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="mensagensOperacao" minOccurs="0" maxOccurs="1">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="incluir" minOccurs="0" maxOccurs="1">
+                <xs:complexType>
+                  <xs:attribute name="titulo" use="optional" type="xs:string" />
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="editar" minOccurs="0" maxOccurs="1">
+                <xs:complexType>
+                  <xs:attribute name="titulo" use="optional" type="xs:string" />
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="excluir" minOccurs="0" maxOccurs="1">
+                <xs:complexType>
+                  <xs:attribute name="titulo" use="optional" type="xs:string" />
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="defaults" minOccurs="0" maxOccurs="1"></xs:element>
+        <xs:element name="importacaopadrao" minOccurs="0" maxOccurs="1">
+          <xs:complexType>
+            <xs:attribute name="operacao" use="required">
+              <xs:simpleType>
+                <xs:restriction base="xs:string">
+                  <xs:enumeration value="ApenasInsert" />
+                  <xs:enumeration value="ApenasUpdate" />
+                  <xs:enumeration value="InsertAndUpdate" />
+                </xs:restriction>
+              </xs:simpleType>
+            </xs:attribute>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+      <xs:attribute name="id" use="required" type="xs:string" />
+      <xs:attribute name="indPermitirCache" use="optional" type="w3boolean" default="true" />
+      <xs:attribute name="dbName" use="required" type="xs:string" />
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="mensagens">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="mensagem" minOccurs="0" maxOccurs="unbounded" type="mensagem">
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <!--- Types -->
+  <xs:complexType name="atualizacaoCache" mixed="true">
+    <xs:sequence>
+      <xs:element name="colecao" minOccurs="0" maxOccurs="unbounded">
+        <xs:complexType>
+          <xs:attribute name="idColecao" use="required" type="xs:string" />
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="mensagem" mixed="true">
+    <xs:sequence>
+      <xs:element name="idioma" minOccurs="1">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="pt-BR" minOccurs="1" type="xs:string" />
+            <xs:element name="en-US" minOccurs="0" type="xs:string" />
+            <xs:element name="es-ES" minOccurs="0" type="xs:string" />
+            <xs:element name="fr-FR" minOccurs="0" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="id" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="IndPermitirNulo" />
+          <xs:enumeration value="TipoInvalido" />
+          <xs:enumeration value="IndPermitirEspacoInterno" />
+          <xs:enumeration value="IndPermitirDuplicidade" />
+          <xs:enumeration value="TamanhoMaximo" />
+          <xs:enumeration value="OpcoesPermitidas" />
+          <xs:enumeration value="DscExpressao1" />
+          <xs:enumeration value="DscExpressao2" />
+          <xs:enumeration value="DscExpressao3" />
+          <xs:enumeration value="Referencia" />
+          <xs:enumeration value="ChaveInclusao" />
+          <xs:enumeration value="QueryValidacao" />
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:complexType>
+
+  <xs:complexType name="idioma" mixed="true">
+    <xs:choice>
+      <xs:element name="idioma" minOccurs="0">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="pt-BR" minOccurs="1" type="xs:string" />
+            <xs:element name="en-US" minOccurs="0" type="xs:string" />
+            <xs:element name="es-ES" minOccurs="0" type="xs:string" />
+            <xs:element name="fr-FR" minOccurs="0" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:choice>
+  </xs:complexType>
+
+  <xs:simpleType name="w3boolean">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="true"/>
+      <xs:enumeration value="false"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+</xs:schema>

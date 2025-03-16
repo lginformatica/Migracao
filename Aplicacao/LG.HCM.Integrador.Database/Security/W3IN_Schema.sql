@@ -1,0 +1,2 @@
+﻿CREATE SCHEMA [W3IN]
+    AUTHORIZATION [dbo];

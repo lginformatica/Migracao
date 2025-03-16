@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='Windows-1252' ?>
+<cadastro xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xsi:noNamespaceSchemaLocation='../../Config.xsd' id='TipoIntegracao' dbName='{owner-IN}TIPO_INTEGRACAO'>
+  <colunas>
+    <coluna id='CodTipoIntegracao' indChave='true' >
+    </coluna>
+    <coluna id='NomTipoIntegracao' indDescricao='true' >
+      <validacao  tamanhoMaximo='255'  />
+    </coluna>
+  </colunas>
+  <formulario largura='800'  altura='600'>
+    <items>
+      <item type='settings' position='label-top' offsetLeft='10' offsetTop='10' />
+      <item type='input' inputWidth='30' name='CodTipoIntegracao' />
+      <item type='input' name='NomTipoIntegracao' inputWidth='300' />
+    </items>
+  </formulario>
+  <Mensagens>
+    <Mensagem chave='CodTipoIntegracao'>
+      <pt-BR>CodTipoIntegracao</pt-BR>
+      <en-US>CodTipoIntegracao</en-US>
+      <es-ES>CodTipoIntegracao</es-ES>
+      <fr-FR>CodTipoIntegracao</fr-FR>
+    </Mensagem>
+    <Mensagem chave='NomTipoIntegracao'>
+      <pt-BR>NomTipoIntegracao</pt-BR>
+      <en-US>NomTipoIntegracao</en-US>
+      <es-ES>NomTipoIntegracao</es-ES>
+      <fr-FR>NomTipoIntegracao</fr-FR>
+    </Mensagem>
+  </Mensagens>
+</cadastro>

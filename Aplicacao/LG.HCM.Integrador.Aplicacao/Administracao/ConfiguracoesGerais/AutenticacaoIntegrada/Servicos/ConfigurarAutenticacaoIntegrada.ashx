@@ -1,0 +1,1 @@
+﻿<%@ WebHandler Language="C#" CodeBehind="ConfigurarAutenticacaoIntegrada.ashx.cs" Class="LG.HCM.Integrador.Aplicacao.Administracao.ConfiguracoesGerais.AutenticacaoIntegrada.Servicos.ConfigurarAutenticacaoIntegrada" %>

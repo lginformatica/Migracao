@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+<html>
+<body>
+	<!-- Div com o conteudo da Aba Geral -->
+	<div id='formGeral'>
+		<fieldset class='fieldPrincipal' xstyle='width:90%'>
+			<label>
+				<span>Msg(envio_dados_corporativos)</span>:
+				<div style="margin-top:15px;margin-bottom:15px;">
+					<input type="radio" id="IntegracaoClaveEnvioDadosCorporativos" name="IntegracaoClaveEnvioDadosCorporativos" value="TRUE" class="radio" />
+					<span style="margin-right: 10px">Msg(sim)</span>
+					<input type="radio" id="IntegracaoClaveEnvioDadosCorporativos" name="IntegracaoClaveEnvioDadosCorporativos" value="FALSE" class="radio" />
+					<span>Msg(nao)</span>
+				</div>
+			</label>
+
+			<label>
+				<span>Msg(url_base_api)</span>: <span class='asterisco'>*</span>
+				<input id='IntegracaoClaveUrlBase' name='IntegracaoClave.UrlBase' type='text' value='' />
+				<span class='erroTxt'></span>
+			</label>
+			<label>
+				<span>Msg(token_client_secret)</span>: <span class='asterisco'>*</span>
+				<br />
+				<input id='IntegracaoClaveChave' name='IntegracaoClave.Chave' type='password' value='' maxlength="200"/>
+				<span class='erroTxt'></span>
+			</label>
+
+		</fieldset>
+	</div>
+</body>
+</html>

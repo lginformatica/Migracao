@@ -1,0 +1,121 @@
+﻿<!DOCTYPE html>
+<html>
+<body>
+	<!-- Div com o conteudo da Aba Geral -->
+	<div id='formGeral'>
+		<div id="titulo" style="padding-top: 15px;padding-left: 10px;">
+			<span>Msg(configuracao_para_definicao_da_nota)</span>
+		</div>
+		<div id='Competencias' style="display: none">
+			<fieldset class='fieldPrincipal fieldComBorda' style="margin-top: 20px;">
+				<legend>
+					<input id="CkCompetencias" class="radio" type="checkbox" />
+					<span>Msg(competencias)</span>
+				</legend>
+				<div id="DivOpcoesCompetencias">
+					<label>
+						<span>Msg(nota_de_origem)</span>:<span class='asterisco'>*</span>
+						<br />
+						<select id='SelNotaDeOrigemCompetencias' class="selectworkflow">
+						</select>
+					</label>
+					<div class="LblComponente">
+						<span>Msg(modelos_de_competencia_considerados)</span>:<span class='asterisco'>*</span>
+						<select id='SelModelosCompetencias' name='SelModelosCompetencias' class='select customSelect' style='width: 300px;'>
+							<option value="">Msg(selecione)</option>
+						</select>
+						<span class='erroTxt'></span>
+					</div>
+					<label>
+						<span>Msg(regra_para_acesso_ao_resultado):</span><span class='asterisco'>*</span>
+						<br />
+						<br />
+						<label>
+							<input class='radio radioMontagem' id='RadioJaExistaResultadoConsolidado' name='RegraAcessoResultado' type='radio' value="C" /><span>Msg(caso_ja_exista_resultado_consolidado)</span>
+						</label>
+						<label>
+							<input class='radio radioMontagem' id='RadioRegraVerAvaliacao' name='RegraAcessoResultado' type='radio' value="V" /><span>Msg(regra_do_ver_avaliacao)</span>
+						</label>
+						<label>
+							<input class='radio radioMontagem' id='RadioRegraEspecifica' name='RegraAcessoResultado' type='radio' value="R" /><span>Msg(regra_especifica)</span>
+						</label>
+						<select id='SelRegraEspecifica' class="selectworkflow" disabled="disabled" style="margin-left: 25px; margin-top: 0px; margin-top: -10px;"></select><br />
+						<span class='erroTxt erroRadioCheckList' style="padding-left:25px;"></span>
+
+					</label>
+				</div>
+			</fieldset>
+		</div>
+		<div id='Calibragem' style="display: none">
+			<fieldset class='fieldPrincipal fieldComBorda' style="margin-top: 20px;">
+				<legend>
+					<input id="CkCalibragem" class="radio" type="checkbox" />
+					<span>Msg(calibragem)</span>
+				</legend>
+				<div id="divOpcoesCalibragem">
+					<label>
+						<span>Msg(nota_de_origem)</span>:<span class='asterisco'>*</span>
+						<br />
+						<select id='SelNotaDeOrigemCalibragem' class="selectworkflow">
+						</select>
+					</label>
+				</div>
+			</fieldset>
+		</div>
+		<div id='Metas' style="display: none">
+			<fieldset class='fieldPrincipal fieldComBorda' style="margin-top: 20px;">
+				<legend>
+					<input id="CkMetas" class="radio" type="checkbox" />
+					<span>Msg(metas)</span>
+				</legend>
+				<div id="divOpcoesMetas">
+					<label>
+						<span>Msg(nota_de_origem)</span>:<span class='asterisco'>*</span>
+						<br />
+						<select id='SelNotaDeOrigemMetas' class="selectworkflow">
+						</select>
+					</label>
+				</div>
+			</fieldset>
+		</div>
+		<div id='divConfiguracoesAdicionais'>
+			<fieldset class='fieldPrincipal fieldComBorda' style="margin-top: 20px;">
+				<legend>
+					<input id="CkConfiguracoesAdicionais" class="radio" type="checkbox" />
+					<span>Msg(configuracao_adicionais)</span>
+				</legend>
+				<div id="divOpcoesConfiguracoesAdionais" style="padding-left: 5px; padding-top: 4px;">
+					<label style="display:flex;">
+						<input id="CkDesconsiderarResultados" class="radio" type="checkbox" style="margin-top: 2px;" disabled="disabled" />
+						<span style="padding-top: 3px;">Msg(desconsiderar_resultados_que_tenham_sido_gerados_a_mais_de):</span><span class='asterisco'>*</span>
+						<input id="Dias" type="text" class="auto autoNumeric" casasDecimais="0" minimo="0" maximo="9999" value="" style="max-width: 50px; margin: 0px 5px 5px 5px; padding-top: 1px;" disabled="disabled" />
+						<span id="SpanDias" style="padding-top: 3px;">    Msg(dias)</span>
+						<label style="padding-top: 2px;">
+							<span class='erroTxt'></span>
+						</label>
+					</label>
+					<label style="display:flex;">
+						<input id="CkLimitarResultados" class="radio" type="checkbox" style="margin-top: 2px;" disabled="disabled" />
+						<span style="padding-top: 3px;">Msg(limitar_resultados_ao_ano_de_referencia):</span><span class='asterisco'>*</span>
+						<input id="Ano" type="text" class="auto autoNumeric" casasDecimais="0" minimo="0" maximo="9999" value="" style="max-width: 50px; margin: 0px 5px 5px 5px; padding-top: 1px;" disabled="disabled" />
+						<label style="padding-top: 2px;">
+							<span class='erroTxt'></span>
+						</label>
+					</label>
+					<label style="display:flex;">
+						<input id="CkConverterResultados" class="radio" type="checkbox" style="padding-top: 4px; margin-top: 2px;" disabled="disabled" />
+						<span id="spMsgConverterResultados" style="padding-top: 4px;">Msg(converter_os_resultados_para_o_range):</span><span class='asterisco'>*</span>
+						<span id="SpanMinimo" style="padding-left: 10px; padding-top: 4px; ">Msg(minimo):</span>
+						<input id="Minimo" type="text" class="auto autoNumeric" casasDecimais="2" minimo="0" maximo="9999" value="0" style="max-width: 50px; margin: 0px 5px 5px 5px; padding-top: 1px;" disabled="disabled" />
+						<span id="SpanMaximo" style="padding-top: 4px;">Msg(maximo):</span>
+						<input id="Maximo" type="text" class="auto autoNumeric" casasDecimais="2" minimo="0" maximo="9999" value="100" style="max-width: 50px; margin: 0px 5px 5px 5px; padding-top: 1px;" disabled="disabled" />
+						<label style="padding-top: 2px;">
+							<span class='erroTxt'></span>
+						</label>
+					</label>
+				</div>
+			</fieldset>
+		</div>
+	</div>
+</body>
+</html>

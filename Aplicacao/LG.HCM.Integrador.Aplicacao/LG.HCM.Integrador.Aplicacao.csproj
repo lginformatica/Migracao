@@ -1,0 +1,462 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{13C16CB6-4DE4-40F2-A06C-B93497D1A724}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>LG.HCM.Integrador.Aplicacao</RootNamespace>
+    <AssemblyName>LG.HCM.Integrador.Aplicacao</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <Use64BitIISExpress />
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\LG.HCM.Integrador.Aplicacao.xml</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Aspose.Cells, Version=7.7.1.0, Culture=neutral, PublicKeyToken=716fcc553a201e56, processorArchitecture=MSIL">
+      <HintPath>..\packages\Aspose.Cells.7.7.1\lib\net20\Aspose.Cells.dll</HintPath>
+    </Reference>
+    <Reference Include="Dapper.StrongName, Version=2.0.0.0, Culture=neutral, PublicKeyToken=e3e8412083d25dd3, processorArchitecture=MSIL">
+      <HintPath>..\packages\Dapper.StrongName.2.0.78\lib\net461\Dapper.StrongName.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetZip, Version=1.13.3.0, Culture=neutral, PublicKeyToken=6583c7c814667745, processorArchitecture=MSIL">
+      <HintPath>..\packages\DotNetZip.1.13.3\lib\net40\DotNetZip.dll</HintPath>
+    </Reference>
+    <Reference Include="LG.Calibragem.Api, Version=2021.6.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\LG.Calibragem.Api.2021.6.0\lib\LG.Calibragem.Api.dll</HintPath>
+    </Reference>
+    <Reference Include="LG.Competence.Api, Version=2022.3.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\LG.Competence.Api.2022.3.0\lib\LG.Competence.Api.dll</HintPath>
+    </Reference>
+    <Reference Include="LG.Metas.Api, Version=2023.6.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\LG.Metas.Api.2023.6.1\lib\LG.Metas.Api.dll</HintPath>
+    </Reference>
+    <Reference Include="LG.PDI.Api, Version=2021.6.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\LG.PDI.Api.2021.6.0\lib\LG.PDI.Api.dll</HintPath>
+    </Reference>
+    <Reference Include="LG.Sucessao.Api, Version=2021.6.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\LG.Sucessao.Api.2021.6.0\lib\LG.Sucessao.Api.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=1.2.11.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.1.2.11\lib\net40-full\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.Agent.Intercept, Version=1.2.0.1011, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.1.2.0\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.DependencyCollector, Version=1.2.3.246, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.DependencyCollector.1.2.3\lib\net45\Microsoft.AI.DependencyCollector.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.PerfCounterCollector, Version=1.2.3.246, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.PerfCounterCollector.1.2.3\lib\net45\Microsoft.AI.PerfCounterCollector.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.ServerTelemetryChannel, Version=1.2.3.246, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.1.2.3\lib\net45\Microsoft.AI.ServerTelemetryChannel.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.Web, Version=1.2.3.246, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Web.1.2.3\lib\net45\Microsoft.AI.Web.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.WindowsServer, Version=1.2.3.246, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.1.2.3\lib\net45\Microsoft.AI.WindowsServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.ApplicationInsights, Version=1.2.3.490, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.1.2.3\lib\net45\Microsoft.ApplicationInsights.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Owin, Version=4.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.4.0.1\lib\net45\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb, Version=4.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.4.0.1\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security, Version=4.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.4.0.1\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OAuth, Version=4.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.OAuth.4.0.1\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="NCalc">
+      <HintPath>..\packages\ncalc.1.3.8\lib\NCalc.dll</HintPath>
+    </Reference>
+    <Reference Include="NCrontab, Version=0.2.10124.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\NCrontab.0.2.10124.1211\lib\NCrontab.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="RestSharp, Version=105.2.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\RestSharp.105.2.3\lib\net46\RestSharp.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Swashbuckle.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cd1bb07a5ac7c7bc, processorArchitecture=MSIL">
+      <HintPath>..\packages\Swashbuckle.Core.5.6.0\lib\net40\Swashbuckle.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.7\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Cors, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Cors.5.2.7\lib\net45\System.Web.Cors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Http, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.7\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.Cors, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Cors.5.2.7\lib\net45\System.Web.Http.Cors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.Owin, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Owin.5.2.7\lib\net45\System.Web.Http.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.7\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="W3.Framework.API, Version=2025.1.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\W3.Framework.API.2025.1.2\lib\W3.Framework.API.dll</HintPath>
+    </Reference>
+    <Reference Include="W3.Framework.Servico, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\W3.Framework.Servico.2025.1.1\lib\W3.Framework.Servico.dll</HintPath>
+    </Reference>
+    <Reference Include="W3.Library, Version=2011.1.2.0, Culture=neutral, PublicKeyToken=13a894c4e4d5af70, processorArchitecture=MSIL">
+      <HintPath>..\packages\W3.Library.Framework.2025.1.1\lib\W3.Library.dll</HintPath>
+    </Reference>
+    <Reference Include="W3.SistemaIntegrado, Version=2010.2024.5.1, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\W3.SistemaIntegrado.2010.2024.5.1\lib\W3.SistemaIntegrado.dll</HintPath>
+    </Reference>
+    <Reference Include="WebActivatorEx, Version=2.0.0.0, Culture=neutral, PublicKeyToken=7b26dc2a43f6a0d4, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebActivatorEx.2.2.0\lib\net40\WebActivatorEx.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Administracao\Comum\Cadastros.aspx" />
+    <Content Include="Administracao\Comum\Importacao.aspx" />
+    <Content Include="Administracao\Comum\Vazio.aspx" />
+    <Content Include="Administracao\ConfiguracoesGerais\APIs\Servicos\Formularios\WorkflowMovimentacaoRescisao.html" />
+    <Content Include="Administracao\ConfiguracoesGerais\APIs\WorkflowMovimentacaoRescisao.aspx" />
+    <Content Include="Administracao\ConfiguracoesGerais\Modulos\ConfigurarCompetencias.aspx" />
+    <Content Include="Administracao\ConfiguracoesGerais\Modulos\Servicos\Formularios\ConfigurarCompetencias.html" />
+    <Content Include="Administracao\ConfiguracoesGerais\AutenticacaoIntegrada\ConfigurarAutenticacaoIntegrada.aspx" />
+    <Content Include="Administracao\ConfiguracoesGerais\AutenticacaoIntegrada\Servicos\Formularios\ConfigurarAutenticacaoIntegrada.html" />
+    <Content Include="Administracao\ConfiguracoesGerais\Profile\ConfigurarProfile.aspx" />
+    <Content Include="Administracao\ConfiguracoesGerais\Profile\Servicos\Formularios\ConfigurarProfile.html" />
+    <Content Include="Administracao\ConfiguracoesGerais\Clave\ConfiguracaoIntegracao.aspx" />
+    <Content Include="Administracao\ConfiguracoesGerais\Clave\Servicos\Formularios\ConfiguracaoIntegracao.html" />
+    <Content Include="Administracao\ConfiguracoesGerais\Treinamento\AutenticacaoIntegrada.aspx" />
+    <Content Include="Administracao\ConfiguracoesGerais\Treinamento\DadosCorporativos.aspx" />
+    <Content Include="Administracao\ConfiguracoesGerais\Treinamento\Servicos\Formularios\AutenticacaoIntegrada.html" />
+    <Content Include="Administracao\ConfiguracoesGerais\Treinamento\Servicos\Formularios\DadosCorporativos.html" />
+    <Content Include="Administracao\Default.aspx" />
+    <Content Include="Administracao\_Principal\ConfiguracoesGerais.aspx" />
+    <Content Include="AreaUsuario\IntegracaoClave\clave.png" />
+    <Content Include="AreaUsuario\IntegracaoLms\treinamento.png" />
+    <Content Include="Default.aspx" />
+    <Content Include="Documentacao\W3.Framework.API.xml" />
+    <Content Include="Integracoes\Clave\SSO.aspx" />
+    <Content Include="Integracoes\Eguru\SSO.aspx" />
+    <Content Include="Integracoes\Feedback\Default.aspx" />
+    <Content Include="packages.config" />
+    <Content Include="Administracao\Comum\Servicos\Cadastros.ashx" />
+    <Content Include="Administracao\Comum\Servicos\Importacao.ashx" />
+    <Content Include="Administracao\Comum\Servicos\Mensagens\Cadastros.msg" />
+    <Content Include="Administracao\Comum\Servicos\Mensagens\Importacao.msg" />
+    <Content Include="Administracao\Servicos\Default.ashx" />
+    <Content Include="Administracao\Servicos\Mensagens\Default.msg" />
+    <Content Include="Administracao\_Principal\Servicos\ConfiguracoesGerais.ashx" />
+    <Content Include="Administracao\_Principal\Servicos\Mensagens\ConfiguracoesGerais.msg" />
+    <Content Include="Administracao\_Principal\Servicos\Mensagens\PrincipalMaster.msg" />
+    <Content Include="Administracao\_Principal\Servicos\PrincipalMaster.ashx" />
+    <Content Include="Aspose.Total.lic" />
+    <Content Include="Administracao\ConfiguracoesGerais\Profile\Servicos\Mensagens\ConfigurarProfile.msg" />
+    <Content Include="Administracao\ConfiguracoesGerais\Profile\Servicos\ConfigurarProfile.ashx" />
+    <Content Include="Administracao\ConfiguracoesGerais\Modulos\Servicos\ConfigurarCompetencias.ashx" />
+    <Content Include="Administracao\ConfiguracoesGerais\Modulos\Servicos\Mensagens\ConfigurarCompetencias.msg" />
+    <Content Include="Administracao\ConfiguracoesGerais\Treinamento\Servicos\AutenticacaoIntegrada.ashx" />
+    <Content Include="Administracao\ConfiguracoesGerais\Treinamento\Servicos\Mensagens\AutenticacaoIntegrada.msg" />
+    <Content Include="Integracoes\Eguru\Servicos\Mensagens\SSO.msg" />
+    <Content Include="Integracoes\Eguru\Servicos\SSO.ashx" />
+    <Content Include="Integracoes\Clave\Servicos\Mensagens\SSO.msg" />
+    <Content Include="Integracoes\Clave\Servicos\SSO.ashx" />
+    <Content Include="Administracao\ConfiguracoesGerais\Treinamento\Servicos\Mensagens\DadosCorporativos.msg" />
+    <Content Include="Administracao\ConfiguracoesGerais\Treinamento\Servicos\DadosCorporativos.ashx" />
+    <Content Include="Administracao\ConfiguracoesGerais\Clave\Servicos\ConfiguracaoIntegracao.ashx" />
+    <Content Include="Administracao\ConfiguracoesGerais\Clave\Servicos\Mensagens\ConfiguracaoIntegracao.msg" />
+    <Content Include="Administracao\ConfiguracoesGerais\APIs\Servicos\WorkflowMovimentacaoRescisao.ashx" />
+    <Content Include="Administracao\ConfiguracoesGerais\APIs\Servicos\Mensagens\WorkflowMovimentacaoRescisao.msg" />
+    <Content Include="Administracao\ConfiguracoesGerais\AutenticacaoIntegrada\Servicos\ConfigurarAutenticacaoIntegrada.ashx" />
+    <Content Include="Administracao\ConfiguracoesGerais\AutenticacaoIntegrada\Servicos\Mensagens\ConfigurarAutenticacaoIntegrada.msg" />
+    <Content Include="Integracoes\Feedback\Servicos\Mensagens\Default.msg" />
+    <Content Include="Integracoes\Feedback\Servicos\Default.ashx" />
+    <None Include="Properties\PublishProfiles\Publish.pubxml" />
+    <Content Include="AreaUsuario\IntegracaoClave\Default.aspx" />
+    <Content Include="AreaUsuario\IntegracaoLms\Default.aspx" />
+    <Content Include="Sair\Sair.aspx" />
+    <Content Include="Sincronismo.ashx" />
+    <Content Include="Servicos\Default.ashx" />
+    <Content Include="Servicos\Mensagens\Default.msg" />
+    <Content Include="W3.Framework\Ferramentas\Comum\Cadastros.aspx" />
+    <Content Include="W3.Framework\Ferramentas\Comum\Importacao.aspx" />
+    <Content Include="W3.Framework\Ferramentas\GeradorClasses\GeraClasses.aspx" />
+    <Content Include="W3.Framework\Ferramentas\GridMensagens\Cadastros.aspx" />
+    <Content Include="W3.Framework\Ferramentas\GridMensagens\Importacao.aspx" />
+    <Content Include="W3.Framework\Ferramentas\GridMensagens\Servicos\Formularios\Substituir.html" />
+    <Content Include="W3.Framework\Ferramentas\GridMensagens\Substituir.aspx" />
+    <Content Include="W3.Framework\Ferramentas\Grid\ListaGrids.aspx" />
+    <Content Include="W3.Framework\Ferramentas\Logs\Log.aspx" />
+    <Content Include="W3.Framework\Ferramentas\Paineis\nCalc\Calcula.aspx" />
+    <Content Include="W3.Framework\Ferramentas\Paineis\Painel\Painel.aspx" />
+    <Content Include="W3.Framework\Ferramentas\Parametro\Parametro.aspx" />
+    <Content Include="W3.Framework\Ferramentas\Sincronismo\InfoSincronismo.aspx" />
+    <Content Include="W3.Framework\Ferramentas\Sincronismo\LogSincronismo.aspx" />
+    <Content Include="W3.Framework\Ferramentas\Util.ashx" />
+    <Content Include="W3.Framework\Ferramentas\Sincronismo\Servicos\LogSincronismo.ashx" />
+    <Content Include="W3.Framework\Ferramentas\Sincronismo\Servicos\InfoSincronismo.ashx" />
+    <Content Include="W3.Framework\Ferramentas\Servicos\Utilitarios.ashx" />
+    <Content Include="W3.Framework\Ferramentas\Servicos\UsuarioFoto.ashx" />
+    <Content Include="W3.Framework\Ferramentas\Parametro\Servicos\Parametro.ashx" />
+    <Content Include="W3.Framework\Ferramentas\Parametro\Servicos\Mensagens\Parametro.msg" />
+    <Content Include="W3.Framework\Ferramentas\Paineis\Painel\Servicos\Painel.ashx" />
+    <Content Include="W3.Framework\Ferramentas\Paineis\nCalc\Servicos\Calcula.ashx" />
+    <Content Include="W3.Framework\Ferramentas\Logs\Servicos\Log.ashx" />
+    <Content Include="W3.Framework\Ferramentas\Grid\Servicos\ListaGrids.ashx" />
+    <Content Include="W3.Framework\Ferramentas\GridMensagens\Servicos\Substituir.ashx" />
+    <Content Include="W3.Framework\Ferramentas\GridMensagens\Servicos\Mensagens\ServicoBaseImportacao.msg" />
+    <Content Include="W3.Framework\Ferramentas\GridMensagens\Servicos\Importacao.ashx" />
+    <Content Include="W3.Framework\Ferramentas\GridMensagens\Servicos\Cadastros.ashx" />
+    <Content Include="W3.Framework\Ferramentas\GeradorClasses\Servicos\GeraClasses.ashx" />
+    <Content Include="W3.Framework\Ferramentas\Comum\Servicos\Importacao.ashx" />
+    <Content Include="W3.Framework\Ferramentas\Comum\Servicos\Cadastros.ashx" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Global.asax" />
+    <Content Include="Profile\Default.aspx" />
+    <Content Include="W3.Framework\Ferramentas\Utilitarios.aspx" />
+    <Content Include="Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Administracao\Comum\Servicos\Cadastros.ashx.cs">
+      <DependentUpon>Cadastros.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Administracao\Comum\Servicos\Importacao.ashx.cs">
+      <DependentUpon>Importacao.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Administracao\ConfiguracoesGerais\APIs\Servicos\WorkflowMovimentacaoRescisao.ashx.cs">
+      <DependentUpon>WorkflowMovimentacaoRescisao.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Administracao\ConfiguracoesGerais\Modulos\ConfigurarCompetencias.aspx.cs">
+      <DependentUpon>ConfigurarCompetencias.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administracao\ConfiguracoesGerais\Modulos\ConfigurarCompetencias.aspx.designer.cs">
+      <DependentUpon>ConfigurarCompetencias.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administracao\ConfiguracoesGerais\Modulos\Servicos\ConfigurarCompetencias.ashx.cs">
+      <DependentUpon>ConfigurarCompetencias.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Administracao\ConfiguracoesGerais\AutenticacaoIntegrada\Servicos\ConfigurarAutenticacaoIntegrada.ashx.cs">
+      <DependentUpon>ConfigurarAutenticacaoIntegrada.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Administracao\ConfiguracoesGerais\Profile\Servicos\ConfigurarProfile.ashx.cs">
+      <DependentUpon>ConfigurarProfile.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Administracao\ConfiguracoesGerais\Clave\Servicos\ConfiguracaoIntegracao.ashx.cs">
+      <DependentUpon>ConfiguracaoIntegracao.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Administracao\ConfiguracoesGerais\Treinamento\Servicos\DadosCorporativos.ashx.cs">
+      <DependentUpon>DadosCorporativos.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Administracao\ConfiguracoesGerais\Treinamento\Servicos\AutenticacaoIntegrada.ashx.cs">
+      <DependentUpon>AutenticacaoIntegrada.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Administracao\Servicos\Default.ashx.cs">
+      <DependentUpon>Default.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Administracao\_Principal\Servicos\ConfiguracoesGerais.ashx.cs">
+      <DependentUpon>ConfiguracoesGerais.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Administracao\_Principal\Servicos\PrincipalMaster.ashx.cs">
+      <DependentUpon>PrincipalMaster.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="ApiStart\WebApiConfig.cs" />
+    <Compile Include="API\Controller\AutoatendimentoController.cs" />
+    <Compile Include="API\Controller\DesempenhoController.cs" />
+    <Compile Include="API\Logical\DesempenhoLogical.cs" />
+    <Compile Include="API\Logical\Profile.cs" />
+    <Compile Include="BaseContentPage.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BasePage.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="API\Controller\AutenticacaoLGController.cs" />
+    <Compile Include="API\Controller\ProfileController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Integracoes\Clave\Servicos\SSO.ashx.cs">
+      <DependentUpon>SSO.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Integracoes\Eguru\Servicos\SSO.ashx.cs">
+      <DependentUpon>SSO.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Integracoes\Feedback\Servicos\Default.ashx.cs">
+      <DependentUpon>Default.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Profile\Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Profile\Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AreaUsuario\IntegracaoClave\Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AreaUsuario\IntegracaoClave\Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AreaUsuario\IntegracaoLms\Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AreaUsuario\IntegracaoLms\Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Sair\Sair.aspx.cs">
+      <DependentUpon>Sair.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Sair\Sair.aspx.designer.cs">
+      <DependentUpon>Sair.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Servicos\Default.ashx.cs">
+      <DependentUpon>Default.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Sincronismo.ashx.cs">
+      <DependentUpon>Sincronismo.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="W3.Framework\Ferramentas\Paineis\Painel\Servicos\Painel.ashx.cs">
+      <DependentUpon>Painel.ashx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\LG.HCM.Integrador.Api\LG.HCM.Integrador.Api.csproj">
+      <Project>{f9f17fd9-1cf7-470b-bfc0-2003160bf716}</Project>
+      <Name>LG.HCM.Integrador.Api</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LG.HCM.Integrador\LG.HCM.Integrador.csproj">
+      <Project>{8ce9f797-5791-47c0-aecf-51a5c8a9ef3d}</Project>
+      <Name>LG.HCM.Integrador</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>57768</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:57768/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

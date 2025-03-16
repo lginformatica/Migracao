@@ -1,0 +1,82 @@
+<?xml version='1.0' encoding='Windows-1252' ?>
+<cadastro xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xsi:noNamespaceSchemaLocation='../../Config.xsd' id='ConfiguracaoIntegracao' dbName='{owner-IN}CONFIGURACAO_INTEGRACAO'>
+  <colunas>
+    <coluna id='CodConfiguracaoIntegracao' indChave='true' >
+    </coluna>
+    <coluna id='CodTipoIntegracao'>
+      <referencia tipo='Colecao' nome='TipoIntegracao' />
+    </coluna>
+    <coluna id='IdConfiguracaoIntegracao' indDescricao='true' >
+      <validacao  tamanhoMaximo='100'  />
+    </coluna>
+    <coluna id='VlrConfiguracaoIntegracao'>
+      <validacao  tamanhoMaximo='4000'  />
+    </coluna>
+    <coluna id='DatAlteracao'>
+    </coluna>
+  </colunas>
+  <formulario largura='800'  altura='600'>
+    <items>
+      <item type='settings' position='label-top' offsetLeft='10' offsetTop='10' />
+      <item type='input' inputWidth='30' name='CodConfiguracaoIntegracao' />
+      <item type='select' name='CodTipoIntegracao' />
+      <item type='input' name='IdConfiguracaoIntegracao' inputWidth='300' />
+      <item type='input' name='VlrConfiguracaoIntegracao' inputWidth='300' />
+      <item type='calendar' dateFormat='%d/%m/%Y' name='DatAlteracao' calendarPosition='right' />
+    </items>
+  </formulario>
+  <queries>
+    <query id='atualizar'>
+      <![CDATA[
+        declare @cod_tipo_integracao int = {CodTipoIntegracao},
+                @id_configuracao_integracao varchar(100) = {IdConfiguracaoIntegracao},
+                @vlr_configuracao_integracao varchar(4000) = {VlrConfiguracaoIntegracao}
+                
+        if exists (select 1 from {owner-IN}configuracao_integracao where cod_tipo_integracao = @cod_tipo_integracao and id_configuracao_integracao = @id_configuracao_integracao)
+        begin
+          update {owner-IN}configuracao_integracao
+          set vlr_configuracao_integracao = @vlr_configuracao_integracao, dat_alteracao = getdate()
+          where cod_tipo_integracao = @cod_tipo_integracao 
+            and id_configuracao_integracao = @id_configuracao_integracao
+        end
+        else
+        begin
+          insert into {owner-IN}configuracao_integracao (cod_tipo_integracao, id_configuracao_integracao, vlr_configuracao_integracao, dat_alteracao)
+          values (@cod_tipo_integracao, @id_configuracao_integracao, @vlr_configuracao_integracao, getdate())
+        end
+      ]]>
+    </query>
+  </queries>
+  <Mensagens>
+    <Mensagem chave='CodConfiguracaoIntegracao'>
+      <pt-BR>CodConfiguracaoIntegracao</pt-BR>
+      <en-US>CodConfiguracaoIntegracao</en-US>
+      <es-ES>CodConfiguracaoIntegracao</es-ES>
+      <fr-FR>CodConfiguracaoIntegracao</fr-FR>
+    </Mensagem>
+    <Mensagem chave='CodTipoIntegracao'>
+      <pt-BR>CodTipoIntegracao</pt-BR>
+      <en-US>CodTipoIntegracao</en-US>
+      <es-ES>CodTipoIntegracao</es-ES>
+      <fr-FR>CodTipoIntegracao</fr-FR>
+    </Mensagem>
+    <Mensagem chave='IdConfiguracaoIntegracao'>
+      <pt-BR>IdConfiguracaoIntegracao</pt-BR>
+      <en-US>IdConfiguracaoIntegracao</en-US>
+      <es-ES>IdConfiguracaoIntegracao</es-ES>
+      <fr-FR>IdConfiguracaoIntegracao</fr-FR>
+    </Mensagem>
+    <Mensagem chave='VlrConfiguracaoIntegracao'>
+      <pt-BR>VlrConfiguracaoIntegracao</pt-BR>
+      <en-US>VlrConfiguracaoIntegracao</en-US>
+      <es-ES>VlrConfiguracaoIntegracao</es-ES>
+      <fr-FR>VlrConfiguracaoIntegracao</fr-FR>
+    </Mensagem>
+    <Mensagem chave='DatAlteracao'>
+      <pt-BR>DatAlteracao</pt-BR>
+      <en-US>DatAlteracao</en-US>
+      <es-ES>DatAlteracao</es-ES>
+      <fr-FR>DatAlteracao</fr-FR>
+    </Mensagem>
+  </Mensagens>
+</cadastro>

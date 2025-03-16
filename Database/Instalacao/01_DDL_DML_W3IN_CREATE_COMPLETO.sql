@@ -1,4 +1,5 @@
-﻿PRINT N'Creating [W3IN]...';
+﻿-- CONFIRMACAO HISTÓRICO
+PRINT N'Creating [W3IN]...';
 
 
 GO
